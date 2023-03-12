@@ -1,0 +1,15 @@
+FTP Commands:
+    USER [username] - Specify the username for authentication
+    PASS [password] - Specify the password for authentication
+    CWD [directory] - Change the current working directory
+    CDUP - Change the current working directory to the parent directory
+    QUIT - Close the connection and exit the FTP client
+    DELE [filename] - Delete a file from the server
+    PWD - Print the current working directory on the server
+    PASV - Enter passive mode for data transfers
+    PORT [IP address],[port number] - Enter active mode for data transfers
+    HELP [command] - Display help text for a specific FTP command or for all commands
+    NOOP - Do nothing, just send a message to the server to keep the connection alive
+    RETR [filename] - Download a file from the server
+    STOR [filename] - Upload a file to the server
+    LIST [directory] - List the contents of a directory on the server
