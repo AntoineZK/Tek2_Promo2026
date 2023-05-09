@@ -1,0 +1,30 @@
+{
+    "messages": [
+        {
+            "sender": "92c00628-8ea0-4c3a-8a5c-5a2c520dc9aa",
+            "receiver": "5036cdcf-d8c7-45ad-a899-6158a795b55d",
+            "body": "tu es raciste",
+            "timestamp": "2023-04-21 16:08:44"
+        },
+        {
+            "sender": "5036cdcf-d8c7-45ad-a899-6158a795b55d",
+            "receiver": "92c00628-8ea0-4c3a-8a5c-5a2c520dc9aa",
+            "body": "oui batard",
+            "timestamp": "2023-04-21 16:08:58"
+        }
+    ],
+    "users": [
+        {
+            "username": "Antoine",
+            "uuid": "92c00628-8ea0-4c3a-8a5c-5a2c520dc9aa"
+        },
+        {
+            "username": "Tom",
+            "uuid": "5036cdcf-d8c7-45ad-a899-6158a795b55d"
+        }
+    ],
+    "teams": [
+        {
+        }
+    ]
+}
