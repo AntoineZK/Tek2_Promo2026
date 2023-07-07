@@ -1,0 +1,11 @@
+.vscode
+*.o
+.idea
+*.out
+raytracer
+*.ppm
+Archi
+RTexternClient
+vector_deseriliser
+test
+output

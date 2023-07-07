@@ -1,0 +1,59 @@
+name: zappy
+
+on:
+    push:
+        branches:
+            - exec_test
+            - server_part
+            - main
+    pull_request:
+        branches:
+            - exec_test
+            - server_part
+            - main
+    workflow_dispatch:
+
+jobs:
+    exec_unitary_test:
+        runs-on: ubuntu-latest
+        container: epitechcontent/epitest-docker
+        steps:
+            - uses: actions/checkout@v2
+            - name: Build
+              run: make
+              timeout-minutes: 5
+            - name: Unitary tests
+              run: |
+                ./unit_tests
+                if [ $? -ne 0 ]; then
+                    echo "::error title="Unitary tests failed"::"
+                    exit 1
+                fi
+                echo "::warning title="Unitary tests passed"::"
+    exec_functional_test:
+        runs-on: ubuntu-latest
+        container: epitechcontent/epitest-docker
+        steps:
+            - uses: actions/checkout@v2
+            - name: Build and Execute
+              run: |
+                cd tests/functionnal_test
+                ./argv.sh
+                cd ../..
+    exec_coding_style:
+        runs-on: ubuntu-latest
+        container: ghcr.io/epitech/coding-style-checker:latest
+        steps:
+        - uses: actions/checkout@v3
+        - run: |
+            check.sh $(pwd) $(pwd)
+            input="coding-style-reports.log"
+            nb_lines=$(wc -l < "$input")
+            while IFS= read -r line
+            do
+                error_name=$(echo "$line" | grep -Eo '(MAJOR|MINOR|INFO)')
+                error_test=$(echo "$line" | grep -Eo '[A-Z]-[A-Z][0-9]')
+                file_path=$(echo "$line" | cut -d':' -f1 | sed 's/^\.\///')
+                line_number=$(echo "$line" | grep -Eo '[0-9]+:' | sed 's/.$//')
+                echo "::error title="$error_name coding style error: $file_path#L$line_number"::$error_test"
+            done < "$input"

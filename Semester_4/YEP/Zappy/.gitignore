@@ -1,0 +1,10 @@
+zappy_ia/__pycache__
+**.o
+zappy_server
+zappy_ai
+zappy_gui
+.vscode
+__pycache__
+coding-style-reports.log
+coding-style.sh
+unit_tests

@@ -1,0 +1,36 @@
+##
+## EPITECH PROJECT, 2023
+## B-OOP-400-NCY-4-1-raytracer-antoine.khalidy
+## File description:
+## Makefile
+##
+
+NAME	=	TEST.so
+
+SRC	=    ./Src/TEST.cpp
+
+OBJ	=	$(SRC:.cpp=.o)
+
+CXXFLAGS	=	-g -Wall -Wextra -fPIC
+
+CXX = g++
+
+all:	$(NAME)
+
+$(NAME):	$(OBJ)
+    @echo "\033[1;32mCompiling $(NAME)...\033[0m"
+    $(CXX) -shared -o $(NAME) $(OBJ)
+    @echo "\033[1;32m$(NAME) compiled successfully\033[0m"
+    @echo "\033[1;32mMoving $(NAME) to Plugins folder\033[0m"
+    mv $(NAME) ../../../Plugins
+    @echo "\033[1;32m$(NAME) moved successfully\033[0m"
+
+clean:
+    rm -f $(OBJ)
+
+fclean:	clean
+    rm -f ../../../Plugins/$(NAME)
+
+re:	fclean all
+
+.PHONY:	all clean fclean re
